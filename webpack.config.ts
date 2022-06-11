@@ -22,7 +22,7 @@ const config: webpack.Configuration = {
     open: true,
   },
   entry: {
-    build: path.resolve(__dirname, "src/ts/app.ts"),
+    build: path.resolve(__dirname, "src/ts/index.ts"),
   },
   output: {
     filename: "[name][contenthash].js",
@@ -43,6 +43,11 @@ const config: webpack.Configuration = {
         use: [Minicss.loader, "css-loader", "sass-loader"],
         include: [path.resolve(__dirname, "src/style")],
       },
+
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
     ],
   },
 
@@ -54,8 +59,9 @@ const config: webpack.Configuration = {
     new Minicss(),
     new Htmlp({
       template: "./src/index.html",
-      title: "Pong-App",
+      title: "Ecommerce-app",
       filename: "index.html",
+      favicon: "./src/favicon.ico",
     }),
   ],
 };
