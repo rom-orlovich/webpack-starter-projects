@@ -33,7 +33,7 @@ module.exports = {
     "import/no-unresolved": [2],
     "spaced-comment": ["error", "always"],
     quotes: ["error", "double", { allowTemplateLiterals: true }],
-    "no-unused-vars": "warn",
+    "no-unused-vars": "error",
     "import/no-extraneous-dependencies": [
       "error",
       {

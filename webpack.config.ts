@@ -2,6 +2,7 @@ import * as webpack from "webpack";
 import * as path from "path";
 import Minicss from "mini-css-extract-plugin";
 import Htmlp from "html-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
 import "webpack-dev-server";
 
 const config: webpack.Configuration = {
@@ -22,7 +23,7 @@ const config: webpack.Configuration = {
     open: true,
   },
   entry: {
-    build: path.resolve(__dirname, "src/ts/index.ts"),
+    build: path.resolve(__dirname, "src/ts/app.ts"),
   },
   output: {
     filename: "[name][contenthash].js",
@@ -56,6 +57,7 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
+    new ESLintPlugin(),
     new Minicss(),
     new Htmlp({
       template: "./src/index.html",
