@@ -19,8 +19,9 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "prettier"],
   rules: {
+    "prettier/prettier": ["error"],
     "lines-between-class-members": [
       "error",
       "always",
