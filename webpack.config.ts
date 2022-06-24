@@ -5,9 +5,11 @@ import Htmlp from "html-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import "webpack-dev-server";
 
+type Mode = "development" | "none" | "production";
+const mode = (process.env.NODE_ENV || "development") as Mode;
 const config: webpack.Configuration = {
-  mode: "development",
-  devtool: "inline-source-map",
+  mode,
+  devtool: mode === "development" ? "inline-source-map" : false,
   devServer: {
     static: {
       directory: path.resolve(__dirname, "public"),
@@ -23,7 +25,7 @@ const config: webpack.Configuration = {
     open: true,
   },
   entry: {
-    build: path.resolve(__dirname, "src/ts/app.ts"),
+    build: path.resolve(__dirname, "src/ts/index.ts"),
   },
   output: {
     filename: "[name][contenthash].js",
